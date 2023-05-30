@@ -13,6 +13,7 @@ import SingleFlight from './src/screens/SingleFlight';
 import Login from './src/screens/Login'
 import Register from './src/screens/Register';
 import SingleHotel from './src/screens/SingleHotel';
+import Flights from './src/screens/Flights';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,8 +21,8 @@ const Drawer = createDrawerNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName={SingleHotel}>
-        <Drawer.Screen name="Flight Details" component={SingleHotel} />
+      <Drawer.Navigator initialRouteName={Flights}>
+        <Drawer.Screen name="Flight Details" component={Flights} />
         <Drawer.Screen name="Register" component={Register} />
       </Drawer.Navigator>
     </NavigationContainer>

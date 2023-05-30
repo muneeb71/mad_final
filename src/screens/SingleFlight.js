@@ -1,10 +1,11 @@
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const SingleFlight = () => {
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
+    <ScrollView style={{backgroundColor: 'white', flex: 1, marginBottom: 25}}>
       <View style={styles.head}>
         <View style={styles.left}>
           <Text style={styles.sub}>Europe</Text>
@@ -78,7 +79,7 @@ const SingleFlight = () => {
           <Text style={styles.btn_text}>$285</Text>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -143,7 +144,7 @@ const styles = new StyleSheet.create({
   },
   bg_plane: {
     position: 'absolute',
-    right: 20,
+    right: 10,
     top: 20,
   },
   overview: {

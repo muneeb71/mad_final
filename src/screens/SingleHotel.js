@@ -1,14 +1,17 @@
-import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Image, Pressable, ImageBackground} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const SingleHotel = () => {
   return (
-    <View style={styles.main_parent}>
-      <View style={styles.main_bg_view}>
-        <Image
+     <View style={[styles.main_parent]}>
+   
+    <View style={styles.main_bg_view}>
+        <ImageBackground
           source={require('./../assets/spain.jpeg')}
           style={styles.main_bg}
+          
         />
       </View>
       <View style={styles.action_icons}>
@@ -29,6 +32,7 @@ const SingleHotel = () => {
           style={{height: 60, width: 60}}
         />
       </View>
+      
       <View style={styles.description}>
         <View style={styles.desc_heading}>
           <View>
@@ -46,8 +50,41 @@ const SingleHotel = () => {
             for responsible and sustainable air travel.
           </Text>
         </View>
+        <View style={styles.details}>
+       <View>
+       <Image
+          source={require('./../assets/double-bed.png')}
+          style={{height: 60, width: 60, alignSelf: 'center'}}
+        />
+        <Text style={styles.icon_subText}>2 Bedrooms</Text>
+       </View>
+       <View>
+       <Image
+          source={require('./../assets/shower.png')}
+          style={{height: 60, width: 60, alignSelf: 'center'}}
+        />
+         <Text style={styles.icon_subText}>2 Bathrooms</Text>
+       </View>
+        <View>
+        <Image
+          source={require('./../assets/tv.png')}
+          style={{height: 60, width: 60, alignSelf: 'center'}}
+        />
+         <Text style={styles.icon_subText}>1 TV Lounge</Text>
+        </View>
+        </View>
+        <View>
+        <Pressable style={styles.button}>
+         <View style={{flexDirection: 'row', gap: 10}}>
+           <Icon name="credit-card" size={22} color="#fff"></Icon>
+          <Text style={styles.btn_text}>Book Now</Text>
+         </View>
+          <Text style={styles.btn_text}>$285</Text>
+        </Pressable>
+      </View>
       </View>
     </View>
+   
   );
 };
 const styles = new StyleSheet.create({
@@ -77,10 +114,12 @@ const styles = new StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   description: {
+    width: '100%',
     backgroundColor: '#fff',
-    borderRadius: 20,
+    borderRadius: 24,
     position: 'absolute',
-    bottom: 150,
+    bottom: 130,
+    height: '34%'
   },
   desc_heading: {
     padding: 27,
@@ -101,12 +140,11 @@ const styles = new StyleSheet.create({
     fontWeight: 400,
   },
   rating: {
-    
     height: 26,
     backgroundColor: '#0D986A',
     width: 60,
     position: 'absolute',
-    top: '15%',
+    top: '7%',
     right: 12,
     borderRadius: 14,
     flexDirection: 'row',
@@ -118,6 +156,38 @@ const styles = new StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontFamily: 'Poppins-Regular',
+  },
+  details: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    height: '20%',
+ 
+  },
+  icon_subText: {
+    color: '#0D986A',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    fontWeight: 800,
+    textAlign: 'left',
+    marginTop: 4
+  },
+  button: {
+    backgroundColor: '#0D986A',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    width: '85%',
+    alignSelf: 'center',
+    marginTop: 8,
+    borderRadius: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  btn_text: {
+    color: '#fff',
+    fontSize: 16,
+    fontFamily: 'Poppins-Regular',
+    textAlign: 'left',
+    fontWeight: 700,
   },
 });
 export default SingleHotel;
