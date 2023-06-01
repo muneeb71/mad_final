@@ -57,8 +57,8 @@ const Destination = ({navigation, route}) => {
             source={require('./../assets/destination-image.jpeg')}
           />
         </View>
-        <View style={styles.text_view}>
-          <Text style={styles.text_main}>Dream Destinations</Text>
+        <View style={[styles.text_view]}>
+          <Text style={[styles.text_main]}>Dream Destinations</Text>
         </View>
         <View style={styles.form}>
           <View style={{padding: 10}}>
@@ -80,7 +80,7 @@ const Destination = ({navigation, route}) => {
               }}></TextInput>
           </View>
           <View style={{padding: 10}}>
-            <Text style={styles.label}>Range</Text>
+            <Text style={styles.label}>Price Range</Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Range"
@@ -92,7 +92,7 @@ const Destination = ({navigation, route}) => {
             <Text style={styles.label}>Features</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter Preferences"
+              placeholder="Explain Your Preferences"
               onChangeText={text => {
                 setFeatures(text);
               }}></TextInput>
@@ -111,9 +111,11 @@ const Destination = ({navigation, route}) => {
 const styles = new StyleSheet.create({
   main_parent: {
     flex: 1,
+    fontFamily: 'Poppins-Regular',
   },
   image: {
-    height: '36%',
+    height: '32%',
+    
   },
   bg_image: {
     backgroundColor: '#000',
@@ -124,30 +126,42 @@ const styles = new StyleSheet.create({
     borderBottomRightRadius: 52,
   },
   text_view: {
+    fontFamily: 'Poppins-Regular',
     alignSelf: 'center',
   },
   text_main: {
-    fontFamily: 'poppins',
+    fontFamily: 'Poppins-Regular',
     fontSize: 26,
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: 600,
   },
   form: {
     padding: 8,
+     fontFamily: 'Poppins-Regular',
   },
   label: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 18,
     color: 'black',
     marginBottom: 6,
   },
   input: {
+    fontFamily: 'Poppins-Regular',
     backgroundColor: 'transparent',
-    padding: 8,
-    borderWidth: 1,
-    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderWidth: 0.94,
+    borderRadius: 12,
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    shadowOffset: {
+      width: 0.9375,
+      height: 0.9375,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 10.75,
+    elevation: 40,
     borderColor: '#D9D9D9',
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
+  
   },
   button: {
     backgroundColor: '#0D986A',
@@ -156,13 +170,15 @@ const styles = new StyleSheet.create({
     alignSelf: 'center',
     marginTop: 5,
     backgroundColor: '#0D986A',
-    padding: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
     width: '90%',
     borderRadius: 10,
   },
   btn_text: {
+    fontFamily: 'Poppins-Regular',
     color: 'white',
-    fontSize: 24,
+    fontSize: 18,
     textAlign: 'center',
   },
 });

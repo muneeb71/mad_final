@@ -9,6 +9,7 @@ import {
 import React, {useState} from 'react';
 import {CheckBox} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import NavBar from '../components/NavBar';
 const Flights = () => {
   const [toggleRound, setToggleRound] = useState(false);
   const [toggleOneWay, setToggleOneWay] = useState(false);
@@ -372,7 +373,7 @@ const Flights = () => {
         </View>
       </View>
      </View>
-      
+    
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {style} from '@mui/system';
 import {white} from 'react-native-paper/lib/typescript/src/styles/themes/v2/colors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -41,13 +41,7 @@ const Recommendations = ({navigate}) => {
           }}>
           <Text style={styles.btn_text}>Asia</Text>
         </Pressable>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>Africa</Text>
-        </Pressable>
+
         <Pressable
           style={[styles.flt_btn]}
           onPress={() => {
@@ -57,30 +51,45 @@ const Recommendations = ({navigate}) => {
         </Pressable>
       </View>
       <View style={styles.popularity}>
-        <Text style={styles.sort}>Populartiy</Text>
-        <Icon name="check" size={24} color="black" />
+        <Text style={styles.sort}>Popularity</Text>
+        <Icon name="arrow-down" size={24} color="gray" style={{marginTop: 5}} />
       </View>
       <View>
-      <View style={styles.action}>
-          <Text style={{fontSize: 18, color: 'black', fontWeight: 600}}>
-            Free Accomodation
-          </Text>
-          <View style={{flexDirection: 'row', gap: 6, marginTop: 2}}>
-            <Text style={{fontSize: 14, color: 'gray', fontWeight: 500}}>
-              When Booking
-            </Text>
+        <View style={styles.action}>
+          <View>
             <Text
               style={{
-                backgroundColor: '#ffa700',
-                borderRadius: 4,
-                paddingLeft: 8,
-                paddingRight: 8,
-                color: 'white',
-                paddingBottom: 2,
+                fontSize: 14,
+                color: 'black',
+                fontWeight: 600,
+                fontFamily: 'Poppins-Regular',
               }}>
-              above $12000
+              Free Accomodation
             </Text>
+            <View style={{flexDirection: 'row', gap: 6, alignItems: 'center'}}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#808080',
+                  fontWeight: 500,
+                  fontFamily: 'Poppins-Regular',
+                }}>
+                When Booking
+              </Text>
+              <Text
+                style={{
+                  backgroundColor: '#FFBB56',
+                  borderRadius: 4,
+                  paddingVertical: 2,
+                  paddingHorizontal: 8,
+                  color: '#FFFFFF',
+                  fontFamily: 'Poppins-Regular',
+                }}>
+                above $12,000
+              </Text>
+            </View>
           </View>
+          <Image source={require('./../assets/Saly-3.png')} style={{position: 'relative', top: -70}}/>
         </View>
         <View style={styles.card_main}>
           <View style={styles.image_view}>
@@ -89,7 +98,7 @@ const Recommendations = ({navigate}) => {
               source={require('./../assets/spain.jpeg')}
             />
             <View style={styles.favor}>
-              <Icon name="plus" size={24} color="white" />
+              <Icon name="heart" size={20} color="red" />
             </View>
           </View>
           <View style={styles.card_text_view}>
@@ -102,7 +111,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 marginTop: 2,
-                fontWeight: 200,
+              fontFamily: 'Poppins-Regular',  fontWeight: 300,
               }}>
               Starting From $585
             </Text>
@@ -111,6 +120,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 fontWeight: 600,
+             fontFamily: 'Poppins-Regular',
                 marginTop: 8,
               }}>
               More Info
@@ -124,7 +134,7 @@ const Recommendations = ({navigate}) => {
               source={require('./../assets/spain.jpeg')}
             />
             <View style={styles.favor}>
-              <Icon name="plus" size={24} color="white" />
+            <Icon name="heart" size={20} color="red" />
             </View>
           </View>
           <View style={styles.card_text_view}>
@@ -137,7 +147,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 marginTop: 2,
-                fontWeight: 200,
+              fontFamily: 'Poppins-Regular',  fontWeight: 200,
               }}>
               Starting From $585
             </Text>
@@ -146,6 +156,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 fontWeight: 600,
+             fontFamily: 'Poppins-Regular',
                 marginTop: 8,
               }}>
               More Info
@@ -159,7 +170,7 @@ const Recommendations = ({navigate}) => {
               source={require('./../assets/spain.jpeg')}
             />
             <View style={styles.favor}>
-              <Icon name="plus" size={24} color="white" />
+            <Icon name="heart" size={20} color="red" />
             </View>
           </View>
           <View style={styles.card_text_view}>
@@ -172,7 +183,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 marginTop: 2,
-                fontWeight: 200,
+              fontFamily: 'Poppins-Regular',  fontWeight: 200,
               }}>
               Starting From $585
             </Text>
@@ -180,7 +191,8 @@ const Recommendations = ({navigate}) => {
               style={{
                 fontSize: 14,
                 color: 'black',
-                fontWeight: 600,
+                fontWeight: 200,
+             fontFamily: 'Poppins-Regular',
                 marginTop: 8,
               }}>
               More Info
@@ -188,7 +200,6 @@ const Recommendations = ({navigate}) => {
           </View>
         </View>
 
-       
         <View style={styles.card_main}>
           <View style={styles.image_view}>
             <Image
@@ -196,7 +207,7 @@ const Recommendations = ({navigate}) => {
               source={require('./../assets/spain.jpeg')}
             />
             <View style={styles.favor}>
-              <Icon name="plus" size={24} color="white" />
+            <Icon name="heart" size={20} color="red" />
             </View>
           </View>
           <View style={styles.card_text_view}>
@@ -210,6 +221,7 @@ const Recommendations = ({navigate}) => {
                 color: 'black',
                 marginTop: 2,
                 fontWeight: 200,
+              fontFamily: 'Poppins-Regular',  
               }}>
               Starting From $585
             </Text>
@@ -218,6 +230,7 @@ const Recommendations = ({navigate}) => {
                 fontSize: 14,
                 color: 'black',
                 fontWeight: 600,
+             fontFamily: 'Poppins-Regular',
                 marginTop: 8,
               }}>
               More Info
@@ -231,22 +244,24 @@ const Recommendations = ({navigate}) => {
 
 const styles = new StyleSheet.create({
   text_main: {
-    fontFamily: 'poppins',
+    fontFamily: 'Poppins-Regular',
     fontSize: 26,
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: 600,
+    alignSelf: 'center',
+    marginTop: 8,
   },
   button_bar: {
     width: '100%',
     flexDirection: 'row',
     gap: 10,
-    marginTop: 20,
-    marginLeft: 10,
+    marginTop: 8,
+    justifyContent: 'center',
   },
   flt_btn: {
-    padding: 6,
-    backgroundColor: '#cfd0d1',
-    width: 68,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#F4F4F4',
     borderRadius: 8,
   },
   flt_btn_active: {
@@ -255,8 +270,10 @@ const styles = new StyleSheet.create({
   btn_text: {
     textAlign: 'center',
     color: 'black',
+    fontFamily: 'Poppins-Regular',
   },
   sort: {
+    fontFamily: 'Poppins-Regular',
     marginLeft: 10,
     marginTop: 8,
   },
@@ -293,9 +310,10 @@ const styles = new StyleSheet.create({
     marginTop: 26,
   },
   card_text: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 18,
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: 600,
   },
   favor: {
     position: 'absolute',
@@ -303,8 +321,8 @@ const styles = new StyleSheet.create({
     left: 92,
     backgroundColor: 'white',
     padding: 3,
-    height: 30,
-    width: 25,
+    height: 26,
+    width: 26,
     borderRadius: 6,
   },
   action: {
@@ -314,6 +332,7 @@ const styles = new StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 16,
     padding: 20,
+    flexDirection: 'row'
   },
 });
 export default Recommendations;
