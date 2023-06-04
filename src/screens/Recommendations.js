@@ -1,250 +1,174 @@
-
-import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+  ActivityIndicator,
+  ToastAndroid,
+} from 'react-native';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {style} from '@mui/system';
-import {white} from 'react-native-paper/lib/typescript/src/styles/themes/v2/colors';
-import LinearGradient from 'react-native-linear-gradient';
+import {ScrollView} from 'react-native-gesture-handler';
 
-const Recommendations = ({navigate}) => {
-  //   const [btnPressed, setBtnPressed] = useState(Array(6).fill(false));
-  //   const handleButtonPress = (index) => {
-  //     const updatedButtonPressed = [...btnPressed];
-  //     updatedButtonPressed[index] = !updatedButtonPressed[index];
-  //     setBtnPressed(updatedButtonPressed);
-  //   }
+const Recommendations = ({navigation, route}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const {category, continent, range, features} = route.params;
+  var apiKey = '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';
+  const getPlaces = async () => {
+    setIsLoading(true);
+    const prompt = `write me at least 5 destinations of ${category} category in ${continent} having a total expenditure of below ${range} with the following features ${features} and return the places as objects with keys thumbnailURL, placeName, lowestBudget seperated with comma so i can set it in the array with a spread operator with a authentic thumbnail URL, place name, lowest budget with proper strings (no forward or backward slash except picture url)`;
+    try {
+      const response = await axios.post(
+        'https://api.openai.com/v1/engines/text-davinci-003/completions',
+        {
+          prompt: prompt,
+          temperature: 0.5,
+          max_tokens: 4000,
+          n: 1,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+          },
+        },
+      );
+      var result = response.data.choices[0].text.split(',');
+      setData([...data, result]);
+      console.log('data -------->', data);
+      data.map(record => {
+        console.log(record.thumbnailURL, record.placeName, record.lowestBudget);
+      });
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      ToastAndroid.show(
+        'Something went wrong! Please Try again Later',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+      );
+      navigation.navigate('Destination');
+    }
+  };
 
+  useEffect(() => {
+    getPlaces();
+  }, []);
   const handleClick = event => {
     console.log(event);
   };
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
-      <Text style={styles.text_main}>Recommendations  </Text>
-      <View style={styles.button_bar}>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>All</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>Europe</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>Asia</Text>
-        </Pressable>
+    <>
+      {isLoading ? (
+        <View style={{justifyContent: 'center', flex: 1}}>
+          <ActivityIndicator size="large" color="#0D986A" />
+        </View>
+      ) : (
+        <View style={{backgroundColor: 'white', flex: 1}}>
+          <Text style={styles.text_main}>Recommendations </Text>
+          <View style={styles.button_bar}>
+            <Pressable
+              style={[styles.flt_btn]}
+              onPress={() => {
+                handleClick(this);
+              }}>
+              <Text style={styles.btn_text}>All</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.flt_btn]}
+              onPress={() => {
+                handleClick(this);
+              }}>
+              <Text style={styles.btn_text}>Europe</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.flt_btn]}
+              onPress={() => {
+                handleClick(this);
+              }}>
+              <Text style={styles.btn_text}>Asia</Text>
+            </Pressable>
 
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>America</Text>
-        </Pressable>
-      </View>
-      <View style={styles.popularity}>
-        <Text style={styles.sort}>Popularity</Text>
-        <Icon name="arrow-down" size={24} color="gray" style={{marginTop: 5}} />
-      </View>
-      <View>
-        
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
+            <Pressable
+              style={[styles.flt_btn]}
+              onPress={() => {
+                handleClick(this);
+              }}>
+              <Text style={styles.btn_text}>America</Text>
+            </Pressable>
+          </View>
+          <View style={styles.popularity}>
+            <Text style={styles.sort}>Popularity</Text>
+            <Icon
+              name="arrow-down"
+              size={24}
+              color="gray"
+              style={{marginTop: 5}}
             />
-            <View style={styles.favor}>
-              <Icon name="heart" size={20} color="red" />
-            </View>
           </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 300,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 200,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-        <View style={styles.action}>
           <View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Free Accomodation
-            </Text>
-            <View style={{flexDirection: 'row', gap: 6, alignItems: 'center'}}>
-              <Text
-                style={{
-                  fontSize: 12,
-                  color: '#808080',
-                  fontWeight: 500,
-                  fontFamily: 'Poppins-Regular',
-                }}>
-                When Booking
+            {data.length > 0 ? (
+              data.map((index, place) => (
+                <View style={styles.card_main} key={index}>
+                  <View style={styles.image_view}>
+                    <Image
+                      style={styles.card_image}
+                      source={
+                        index % 2 === 1
+                          ? require('./../assets/destination-image.jpeg')
+                          : require('./../assets/spain.jpeg')
+                      }
+                    />
+                    <View style={styles.favor}>
+                      <Icon name="heart" size={20} color="red" />
+                    </View>
+                  </View>
+                  <View style={styles.card_text_view}>
+                    <View style={{flexDirection: 'row', gap: 10}}>
+                      <Text style={styles.card_text}>{place.placeName}</Text>
+                      <Text style={{marginTop: 3, color: '#ffa700'}}>
+                        (5.0)
+                      </Text>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: 'black',
+                        marginTop: 2,
+                        fontFamily: 'Poppins-Regular',
+                        fontWeight: 300,
+                      }}>
+                      {place.lowestBudget}
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: 'black',
+                        fontWeight: 600,
+                        fontFamily: 'Poppins-Regular',
+                        marginTop: 8,
+                      }}>
+                      More Info
+                    </Text>
+                  </View>
+                </View>
+              ))
+            ) : (
+              <Text style={styles.text_main}>
+                No Suggestions at the moment!
               </Text>
-              <Text
-                style={{
-                  backgroundColor: '#FFBB56',
-                  borderRadius: 4,
-                  paddingVertical: 2,
-                  paddingHorizontal: 8,
-                  color: '#FFFFFF',
-                  fontFamily: 'Poppins-Regular',
-                }}>
-                above $12,000
-              </Text>
-            </View>
-          </View>
-          <Image source={require('./../assets/Saly-3.png')} style={{position: 'relative', top: -70}}/>
-        </View>
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 200,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 200,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
+            )}
           </View>
         </View>
-              
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-                fontWeight: 200,
-              fontFamily: 'Poppins-Regular',  
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
+      )}
+    </>
   );
 };
 
-const styles = new StyleSheet.create({
+const styles = StyleSheet.create({
   text_main: {
     fontFamily: 'Poppins-Regular',
     fontSize: 26,
@@ -316,6 +240,7 @@ const styles = new StyleSheet.create({
     fontSize: 18,
     color: 'black',
     fontWeight: 600,
+    
   },
   favor: {
     position: 'absolute',
@@ -335,7 +260,7 @@ const styles = new StyleSheet.create({
     borderRadius: 16,
     padding: 20,
     flexDirection: 'row',
-    marginBottom: 8
+    marginBottom: 8,
   },
 });
 export default Recommendations;

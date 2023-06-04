@@ -1,244 +1,382 @@
-import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+  ToastAndroid,
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {style} from '@mui/system';
-import {white} from 'react-native-paper/lib/typescript/src/styles/themes/v2/colors';
-import LinearGradient from 'react-native-linear-gradient';
+import fs from 'react-native-fs';
+import jsonData from './../components/data.json';
 
-const Recommendations = ({navigate}) => {
-  //   const [btnPressed, setBtnPressed] = useState(Array(6).fill(false));
-  //   const handleButtonPress = (index) => {
-  //     const updatedButtonPressed = [...btnPressed];
-  //     updatedButtonPressed[index] = !updatedButtonPressed[index];
-  //     setBtnPressed(updatedButtonPressed);
-  //   }
+const Recommendations = ({navigation, route}) => {
+  const hotelData = route.params?.data;
+  const place = route.params?.place;
+  const [btn1, setBtn1] = useState(false);
+  const [btn2, setBtn2] = useState(false);
+  const [btn3, setBtn3] = useState(false);
+  const [btn4, setBtn4] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hotels, setHotels] = useState([]);
 
-  const handleClick = event => {
-    console.log(event);
+  const hotelDetails = (hotel) => {
+    if(hotel.hac_offers.offers){
+      navigation.navigate('Single Hotel', {hotel: hotel, place: place})
+    }
+    else{
+      ToastAndroid.show(
+        'No Offers Available For This Hotel!',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM
+      )
+      return;
+    }
+  }
+
+  const handleClick = num => {
+    if (num === 1) {
+      setBtn1(!btn1);
+    } else if (num === 2) {
+      setBtn2(!btn2);
+    } else if (num === 3) {
+      setBtn3(!btn3);
+    } else if (num === 4) {
+      setBtn4(!btn4);
+    }
   };
+  const readFile = async () => {
+    try {
+      setIsLoading(false);
+      return jsonData.data;
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      ToastAndroid.show(
+        'Error Fetching Data',
+        ToastAndroid.BOTTOM,
+        ToastAndroid.SHORT,
+      );
+      navigation.navigate('Home');
+    }
+  };
+  useEffect(() => {
+    if (hotelData == undefined) {
+      setHotels(hotelData);
+      setIsLoading(false)
+    } else {
+      var jsonString = JSON.stringify(jsonData)
+      var obj = JSON.parse(jsonString)
+      setHotels(obj.data);
+      setIsLoading(false)
+    }
+  }, []);
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
-      <Text style={styles.text_main}>Accomodations</Text>
-      <View style={styles.button_bar}>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>All</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>Europe</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>Asia</Text>
-        </Pressable>
+    
+    <>
+      {isLoading ? (
+        <>
+        <View style={{justifyContent: 'center', flex: 1}}>
+          <ActivityIndicator size="large" color="#0D986A" />
+        </View>
+        </>
+      ) : (
 
-        <Pressable
-          style={[styles.flt_btn]}
-          onPress={() => {
-            handleClick(this);
-          }}>
-          <Text style={styles.btn_text}>America</Text>
-        </Pressable>
-      </View>
-      <View style={styles.popularity}>
-        <Text style={styles.sort}>Popularity</Text>
-        <Icon name="arrow-down" size={24} color="gray" style={{marginTop: 5}} />
-      </View>
-      <View>
-        <View style={styles.action}>
+        <ScrollView>
+           <Text style={styles.text_main}>Accomodations</Text>
+          <View style={styles.button_bar}>
+            <Pressable
+              style={[
+                styles.flt_btn,
+                {backgroundColor: btn1 ? '#0D986A' : '#F4F4F4'},
+              ]}
+              onPress={() => {
+                handleClick(1);
+              }}>
+              <Text style={styles.btn_text}>All</Text>
+            </Pressable>
+            <Pressable
+              style={[
+                styles.flt_btn,
+                {backgroundColor: btn2 ? '#0D986A' : '#F4F4F4'},
+              ]}
+              onPress={() => {
+                handleClick(2);
+              }}>
+              <Text style={styles.btn_text}>Europe</Text>
+            </Pressable>
+            <Pressable
+              style={[
+                styles.flt_btn,
+                {backgroundColor: btn3 ? '#0D986A' : '#F4F4F4'},
+              ]}
+              onPress={() => {
+                handleClick(3);
+              }}>
+              <Text style={styles.btn_text}>Asia</Text>
+            </Pressable>
+
+            <Pressable
+              style={[
+                styles.flt_btn,
+                {backgroundColor: btn4 ? '#0D986A' : '#F4F4F4'},
+              ]}
+              onPress={() => {
+                handleClick(4);
+              }}>
+              <Text style={styles.btn_text}>America</Text>
+            </Pressable>
+          </View>
+          <View style={styles.popularity}>
+            <Text style={styles.sort}>Popularity</Text>
+            <Icon
+              name="arrow-down"
+              size={24}
+              color="gray"
+              style={{marginTop: 5}}
+            />
+          </View>
           <View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Free Accomodation
-            </Text>
-            <View style={{flexDirection: 'row', gap: 6, alignItems: 'center'}}>
-              <Text
-                style={{
-                  fontSize: 12,
-                  color: '#808080',
-                  fontWeight: 500,
-                  fontFamily: 'Poppins-Regular',
-                }}>
-                When Booking
-              </Text>
-              <Text
-                style={{
-                  backgroundColor: '#FFBB56',
-                  borderRadius: 4,
-                  paddingVertical: 2,
-                  paddingHorizontal: 8,
-                  color: '#FFFFFF',
-                  fontFamily: 'Poppins-Regular',
-                }}>
-                above $12,000
-              </Text>
+            <View style={styles.action}>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: 'black',
+                    fontWeight: 600,
+                    fontFamily: 'Poppins-Regular',
+                  }}>
+                  Free Accomodation
+                </Text>
+                <View
+                  style={{flexDirection: 'row', gap: 6, alignItems: 'center'}}>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      color: '#808080',
+                      fontWeight: 500,
+                      fontFamily: 'Poppins-Regular',
+                    }}>
+                    When Booking
+                  </Text>
+                  <Text
+                    style={{
+                      backgroundColor: '#FFBB56',
+                      borderRadius: 4,
+                      paddingVertical: 2,
+                      paddingHorizontal: 8,
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins-Regular',
+                    }}>
+                    above $12,000
+                  </Text>
+                </View>
+              </View>
+              <Image
+                source={require('./../assets/Saly-3.png')}
+                style={{position: 'relative', top: -70}}
+              />
             </View>
+              {
+                hotels.map((hotel, index) => (
+                  
+                  <View style={styles.card_main} key={index}>
+                  <View style={styles.image_view}>
+                    <Image
+                      style={styles.card_image}
+                      source={{uri: hotel.photo?.images?.medium?.url}}
+                    />
+                    <View style={styles.favor}>
+                      <Icon name="heart" size={20} color="red" />
+                    </View>
+                  </View>
+                  <View style={styles.card_text_view}>   
+                    <View style={{flexDirection: 'row', gap: 10}}>
+                      <Text style={styles.card_text}>{hotel.name}</Text>
+                      <Text style={{marginTop: 3, color: '#ffa700'}}>({hotel.rating})</Text>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: 'black',
+                        marginTop: 2,
+                        fontFamily: 'Poppins-Regular',
+                        fontWeight: 300,
+                      }}>
+                      Starting From {hotel.price}
+                    </Text>
+                   <TouchableOpacity style={{flexDirection: 'row'}}
+                   onPress={() => {hotelDetails(hotel)}}
+                   >
+                   
+                   <Text
+                      style={{
+                        fontSize: 14,
+                        color: 'black',
+                        fontWeight: 600,
+                        fontFamily: 'Poppins-Regular',
+                        marginTop: 8,
+                      }}>
+                      More Info
+                    </Text>
+                    <Image source={require('./../assets/right-arrow-black.png')} style={{height: 26, width: 26, marginLeft: 6, marginTop: 5}} />
+                   </TouchableOpacity>
+                  </View>
+                </View>
+                ))
+              }
           </View>
-          <Image source={require('./../assets/Saly-3.png')} style={{position: 'relative', top: -70}}/>
-        </View>
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-              <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 300,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 200,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-              fontFamily: 'Poppins-Regular',  fontWeight: 200,
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 200,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
+        </ScrollView>
+      )}
+    </>
+    //    <View style={{backgroundColor: 'white', flex: 1}}>
+    //    <Text style={styles.text_main}>Accomodations</Text>
+    //    {isLoading ? (
+    //      <View style={{justifyContent: 'center', flex: 1}}>
+    //        <ActivityIndicator size="large" color="#0D986A" />
+    //      </View>
+    //    ) : (
+    //      <ScrollView>
+    //        <View style={styles.button_bar}>
+    //          <Pressable
+    //            style={[
+    //              styles.flt_btn,
+    //              {backgroundColor: btn1 ? '#0D986A' : '#F4F4F4'},
+    //            ]}
+    //            onPress={() => {
+    //              handleClick(1);
+    //            }}>
+    //            <Text style={styles.btn_text}>All</Text>
+    //          </Pressable>
+    //          <Pressable
+    //            style={[
+    //              styles.flt_btn,
+    //              {backgroundColor: btn2 ? '#0D986A' : '#F4F4F4'},
+    //            ]}
+    //            onPress={() => {
+    //              handleClick(2);
+    //            }}>
+    //            <Text style={styles.btn_text}>Europe</Text>
+    //          </Pressable>
+    //          <Pressable
+    //            style={[
+    //              styles.flt_btn,
+    //              {backgroundColor: btn3 ? '#0D986A' : '#F4F4F4'},
+    //            ]}
+    //            onPress={() => {
+    //              handleClick(3);
+    //            }}>
+    //            <Text style={styles.btn_text}>Asia</Text>
+    //          </Pressable>
 
-        <View style={styles.card_main}>
-          <View style={styles.image_view}>
-            <Image
-              style={styles.card_image}
-              source={require('./../assets/spain.jpeg')}
-            />
-            <View style={styles.favor}>
-            <Icon name="heart" size={20} color="red" />
-            </View>
-          </View>
-          <View style={styles.card_text_view}>
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={styles.card_text}>Spain</Text>
-              <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                marginTop: 2,
-                fontWeight: 200,
-              fontFamily: 'Poppins-Regular',  
-              }}>
-              Starting From $585
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: 'black',
-                fontWeight: 600,
-             fontFamily: 'Poppins-Regular',
-                marginTop: 8,
-              }}>
-              More Info
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
+    //          <Pressable
+    //            style={[
+    //              styles.flt_btn,
+    //              {backgroundColor: btn4 ? '#0D986A' : '#F4F4F4'},
+    //            ]}
+    //            onPress={() => {
+    //              handleClick(4);
+    //            }}>
+    //            <Text style={styles.btn_text}>America</Text>
+    //          </Pressable>
+    //        </View>
+    //        <View style={styles.popularity}>
+    //          <Text style={styles.sort}>Popularity</Text>
+    //          <Icon
+    //            name="arrow-down"
+    //            size={24}
+    //            color="gray"
+    //            style={{marginTop: 5}}
+    //          />
+    //        </View>
+    //        <View>
+    //          <View style={styles.action}>
+    //            <View>
+    //              <Text
+    //                style={{
+    //                  fontSize: 14,
+    //                  color: 'black',
+    //                  fontWeight: 600,
+    //                  fontFamily: 'Poppins-Regular',
+    //                }}>
+    //                Free Accomodation
+    //              </Text>
+    //              <View
+    //                style={{flexDirection: 'row', gap: 6, alignItems: 'center'}}>
+    //                <Text
+    //                  style={{
+    //                    fontSize: 12,
+    //                    color: '#808080',
+    //                    fontWeight: 500,
+    //                    fontFamily: 'Poppins-Regular',
+    //                  }}>
+    //                  When Booking
+    //                </Text>
+    //                <Text
+    //                  style={{
+    //                    backgroundColor: '#FFBB56',
+    //                    borderRadius: 4,
+    //                    paddingVertical: 2,
+    //                    paddingHorizontal: 8,
+    //                    color: '#FFFFFF',
+    //                    fontFamily: 'Poppins-Regular',
+    //                  }}>
+    //                  above $12,000
+    //                </Text>
+    //              </View>
+    //            </View>
+    //            <Image
+    //              source={require('./../assets/Saly-3.png')}
+    //              style={{position: 'relative', top: -70}}
+    //            />
+    //          </View>
+
+    //          <View style={styles.card_main}>
+    //            <View style={styles.image_view}>
+    //              <Image
+    //                style={styles.card_image}
+    //                source={require('./../assets/spain.jpeg')}
+    //              />
+    //              <View style={styles.favor}>
+    //                <Icon name="heart" size={20} color="red" />
+    //              </View>
+    //            </View>
+    //            <View style={styles.card_text_view}>
+    //              <View style={{flexDirection: 'row', gap: 10}}>
+    //                <Text style={styles.card_text}>Spain</Text>
+    //                <Text style={{marginTop: 3, color: '#ffa700'}}>(5.0)</Text>
+    //              </View>
+    //              <Text
+    //                style={{
+    //                  fontSize: 14,
+    //                  color: 'black',
+    //                  marginTop: 2,
+    //                  fontFamily: 'Poppins-Regular',
+    //                  fontWeight: 300,
+    //                }}>
+    //                Starting From $585
+    //              </Text>
+    //              <Text
+    //                style={{
+    //                  fontSize: 14,
+    //                  color: 'black',
+    //                  fontWeight: 600,
+    //                  fontFamily: 'Poppins-Regular',
+    //                  marginTop: 8,
+    //                }}>
+    //                More Info
+    //              </Text>
+    //            </View>
+    //          </View>
+
+    //        </View>
+    //      </ScrollView>
+    //    )}
+    //  </View>
   );
 };
 
@@ -308,6 +446,7 @@ const styles = new StyleSheet.create({
     position: 'relative',
     left: 155,
     marginTop: 26,
+    width: '50%'
   },
   card_text: {
     fontFamily: 'Poppins-Regular',
@@ -332,7 +471,7 @@ const styles = new StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 16,
     padding: 20,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
 });
 export default Recommendations;

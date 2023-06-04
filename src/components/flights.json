@@ -1,0 +1,1109 @@
+{
+    
+    "data": [
+      {
+        "id": "13542-2302070850--32171-0-12712-2302071155|12712-2302141946--32171-0-13542-2302150750",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 8.20793,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302070850--32171-0-12712-2302071155",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T08:50:00",
+            "arrival": "2023-02-07T11:55:00",
+            "duration": 485,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302141946--32171-0-13542-2302150750",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "departure": "2023-02-14T19:46:00",
+            "arrival": "2023-02-15T07:50:00",
+            "duration": 424,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.292526,
+        "score": 8.19563,
+        "totalDuration": 909
+      },
+      {
+        "id": "13542-2302070850--32171-0-12712-2302071155|12712-2302142105--32171-0-13554-2302150930",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 8.02259,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302070850--32171-0-12712-2302071155",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T08:50:00",
+            "arrival": "2023-02-07T11:55:00",
+            "duration": 485,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302142105--32171-0-13554-2302150930",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:05:00",
+            "arrival": "2023-02-15T09:30:00",
+            "duration": 445,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.027381,
+        "score": 8.01618,
+        "totalDuration": 930
+      },
+      {
+        "id": "13542-2302070850--32171-0-12712-2302071155|12712-2302141745--32171-0-13542-2302150610",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 8.02259,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302070850--32171-0-12712-2302071155",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T08:50:00",
+            "arrival": "2023-02-07T11:55:00",
+            "duration": 485,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302141745--32171-0-13542-2302150610",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "departure": "2023-02-14T17:45:00",
+            "arrival": "2023-02-15T06:10:00",
+            "duration": 445,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.292526,
+        "score": 8.01097,
+        "totalDuration": 930
+      },
+      {
+        "id": "13542-2302071200--32171-0-12712-2302071527|12712-2302141946--32171-0-13542-2302150750",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 8.01397,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302071200--32171-0-12712-2302071527",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T12:00:00",
+            "arrival": "2023-02-07T15:27:00",
+            "duration": 507,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302141946--32171-0-13542-2302150750",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "departure": "2023-02-14T19:46:00",
+            "arrival": "2023-02-15T07:50:00",
+            "duration": 424,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.292526,
+        "score": 8.00197,
+        "totalDuration": 931
+      },
+      {
+        "id": "13542-2302071200--32171-0-12712-2302071527|12712-2302142105--32171-0-13554-2302150930",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.83719,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302071200--32171-0-12712-2302071527",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T12:00:00",
+            "arrival": "2023-02-07T15:27:00",
+            "duration": 507,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302142105--32171-0-13554-2302150930",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:05:00",
+            "arrival": "2023-02-15T09:30:00",
+            "duration": 445,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.027381,
+        "score": 7.83369,
+        "totalDuration": 952
+      },
+      {
+        "id": "13542-2302071200--32171-0-12712-2302071527|12712-2302141745--32171-0-13542-2302150610",
+        "price": {
+          "amount": 429.22,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.83719,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13542-2302071200--32171-0-12712-2302071527",
+            "origin": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T12:00:00",
+            "arrival": "2023-02-07T15:27:00",
+            "duration": 507,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "12712-2302141745--32171-0-13542-2302150610",
+            "origin": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "destination": {
+              "id": 13542,
+              "entity_id": 95565051,
+              "alt_id": "LGW",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Gatwick",
+              "type": "Airport",
+              "display_code": "LGW"
+            },
+            "departure": "2023-02-14T17:45:00",
+            "arrival": "2023-02-15T06:10:00",
+            "duration": 445,
+            "carriers": [
+              {
+                "id": -32171,
+                "name": "jetBlue",
+                "alt_id": "B6",
+                "display_code": "B6",
+                "display_code_type": "IATA"
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -14.292526,
+        "score": 7.82971,
+        "totalDuration": 952
+      },
+      {
+        "id": "13554-2302071945--32317-0-12712-2302072240|11442-2302142130--32480-0-13554-2302150910",
+        "price": {
+          "amount": 475.99,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68826,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302071945--32317-0-12712-2302072240",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T19:45:00",
+            "arrival": "2023-02-07T22:40:00",
+            "duration": 475,
+            "carriers": [
+              {
+                "id": -32317,
+                "name": "Finnair",
+                "alt_id": "AY",
+                "display_code": "AY",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32480-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": 0,
+        "score": 7.68427,
+        "totalDuration": 875
+      },
+      {
+        "id": "13554-2302071945--32222-0-12712-2302072240|11442-2302142130--32222-0-13554-2302150910",
+        "price": {
+          "amount": 475.99,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68749,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302071945--32222-0-12712-2302072240",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T19:45:00",
+            "arrival": "2023-02-07T22:40:00",
+            "duration": 475,
+            "carriers": [
+              {
+                "id": -32222,
+                "name": "Iberia",
+                "alt_id": "IB",
+                "display_code": "IB",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32222-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32222,
+                "name": "Iberia",
+                "alt_id": "IB",
+                "display_code": "IB",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": 0,
+        "score": 7.68208,
+        "totalDuration": 875
+      },
+      {
+        "id": "13554-2302070825--32480-0-12712-2302071125|11442-2302142130--32480-0-13554-2302150910",
+        "price": {
+          "amount": 473.75,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68149,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302070825--32480-0-12712-2302071125",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T08:25:00",
+            "arrival": "2023-02-07T11:25:00",
+            "duration": 480,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32480-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -3.8118958,
+        "score": 7.67989,
+        "totalDuration": 880
+      },
+      {
+        "id": "13554-2302071945--32222-0-12712-2302072240|11442-2302142130--32480-0-13554-2302150910",
+        "price": {
+          "amount": 475.99,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68826,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302071945--32222-0-12712-2302072240",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T19:45:00",
+            "arrival": "2023-02-07T22:40:00",
+            "duration": 475,
+            "carriers": [
+              {
+                "id": -32222,
+                "name": "Iberia",
+                "alt_id": "IB",
+                "display_code": "IB",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32480-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": 0,
+        "score": 7.67929,
+        "totalDuration": 875
+      },
+      {
+        "id": "13554-2302071945--32317-0-12712-2302072240|11442-2302142130--32222-0-13554-2302150910",
+        "price": {
+          "amount": 475.99,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68749,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302071945--32317-0-12712-2302072240",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T19:45:00",
+            "arrival": "2023-02-07T22:40:00",
+            "duration": 475,
+            "carriers": [
+              {
+                "id": -32317,
+                "name": "Finnair",
+                "alt_id": "AY",
+                "display_code": "AY",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32222-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32222,
+                "name": "Iberia",
+                "alt_id": "IB",
+                "display_code": "IB",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": 0,
+        "score": 7.6771,
+        "totalDuration": 875
+      },
+      {
+        "id": "13554-2302071125--32480-0-12712-2302071425|11442-2302142130--32480-0-13554-2302150910",
+        "price": {
+          "amount": 473.75,
+          "update_status": "current",
+          "last_updated": "2022-07-27T06:26:00",
+          "quote_age": 2,
+          "score": 7.68149,
+          "transfer_type": "MANAGED"
+        },
+        "legs": [
+          {
+            "id": "13554-2302071125--32480-0-12712-2302071425",
+            "origin": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "destination": {
+              "id": 12712,
+              "entity_id": 95565058,
+              "alt_id": "JFK",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York John F. Kennedy",
+              "type": "Airport",
+              "display_code": "JFK"
+            },
+            "departure": "2023-02-07T11:25:00",
+            "arrival": "2023-02-07T14:25:00",
+            "duration": 480,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          },
+          {
+            "id": "11442-2302142130--32480-0-13554-2302150910",
+            "origin": {
+              "id": 11442,
+              "entity_id": 95565059,
+              "alt_id": "EWR",
+              "parent_id": 5772,
+              "parent_entity_id": 27537542,
+              "name": "New York Newark",
+              "type": "Airport",
+              "display_code": "EWR"
+            },
+            "destination": {
+              "id": 13554,
+              "entity_id": 95565050,
+              "alt_id": "LHR",
+              "parent_id": 4698,
+              "parent_entity_id": 27544008,
+              "name": "London Heathrow",
+              "type": "Airport",
+              "display_code": "LHR"
+            },
+            "departure": "2023-02-14T21:30:00",
+            "arrival": "2023-02-15T09:10:00",
+            "duration": 400,
+            "carriers": [
+              {
+                "id": -32480,
+                "name": "British Airways",
+                "alt_id": "BA",
+                "display_code": "BA",
+                "display_code_type": "IATA",
+                "alliance": -32000
+              }
+            ],
+            "stop_count": 0,
+            "stops": []
+          }
+        ],
+        "is_eco_contender": false,
+        "eco_contender_delta": -8.542371,
+        "score": 7.67487,
+        "totalDuration": 880
+      }
+    ]
+  }

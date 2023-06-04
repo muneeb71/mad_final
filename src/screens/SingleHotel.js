@@ -1,90 +1,146 @@
-import {View, Text, StyleSheet, Image, Pressable, ImageBackground} from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Pressable,
+  ImageBackground,
+  ScrollView,
+  ToastAndroid,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { ScrollView } from 'react-native-gesture-handler';
+import axios from 'axios';
 
-const SingleHotel = () => {
+const SingleHotel = ({navigation, route}) => {
+  const { hotel, place } = route.params;
+  const [details, setDetails] = useState(null);
+  const [hotelData, setHotelData] = useState(null);
+
+  useEffect(() => {
+    setHotelData(hotel);
+    getDetails()
+  }, [hotel]);
+
+  const getDetails = async() => {
+    const options = {
+      method: 'GET',
+      url: 'https://travel-advisor.p.rapidapi.com/hotels/get-details', 
+      params: {
+        location_id: 6350989,
+        lang: 'en_US',
+        currency: 'USD',
+      },
+      headers: {
+        'X-RapidAPI-Key': '467cd9212cmshaf3f763607a7447p17ac21jsnd93ca1989979',
+        'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+      }
+    }; 
+    
+    try {
+      const response = await axios.request(options);
+      setDetails(response.data.data[0]);
+      return;
+    } catch (error) {
+      ToastAndroid.show(
+        'Something Went Wrong!',
+        ToastAndroid.BOTTOM,
+        ToastAndroid.SHORT
+      )
+      navigation.goBack();
+    }
+
+  }
   return (
-     <View style={[styles.main_parent]}>
-   
-    <View style={styles.main_bg_view}>
-        <ImageBackground
-          source={require('./../assets/spain.jpeg')}
-          style={styles.main_bg}
-          
-        />
-      </View>
-      <View style={styles.action_icons}>
-        <Image
-          source={require('./../assets/location.png')}
-          style={{height: 65, width: 60}}
-        />
-        <Image
-          source={require('./../assets/hotel.png')}
-          style={{height: 50, width: 50, marginTop: 6}}
-        />
-        <Image
-          source={require('./../assets/road-sign.png')}
-          style={{height: 60, width: 60}}
-        />
-        <Image
-          source={require('./../assets/dish.png')}
-          style={{height: 60, width: 60}}
-        />
-      </View>
-      
-      <View style={styles.description}>
-        <View style={styles.desc_heading}>
-          <View>
-            <Text style={styles.desc_text}>Easy-Inn</Text>
-            <View style={styles.rating}>
-              <Icon name="star" size={15} color="#fff" style={{marginTop: 4.5}} />
-              <Text style={[styles.text, {marginTop: 1}]}>4.8</Text>
+    <View style={[styles.main_parent]}>
+     
+        <View style={styles.main_bg_view}>
+          <ImageBackground
+            source={{uri: hotel.photo?.images?.original?.url}}
+            style={styles.main_bg}
+          />
+        </View>
+        <View style={styles.action_icons}>
+          <Image
+            source={require('./../assets/location.png')}
+            style={{height: 65, width: 60}}
+          />
+          <Image
+            source={require('./../assets/hotel.png')}
+            style={{height: 50, width: 50, marginTop: 6}}
+          />
+          <Image
+            source={require('./../assets/road-sign.png')}
+            style={{height: 60, width: 60}}
+          />
+          <Image
+            source={require('./../assets/dish.png')}
+            style={{height: 60, width: 60}}
+          />
+        </View>
+
+        <View style={[styles.description]}>
+        <ScrollView>
+        <View style={[styles.desc_heading]}>
+            <View>
+              <Text style={styles.desc_text}>{hotel.name}</Text>
+              <View style={styles.rating}>
+                <Icon
+                  name="star"
+                  size={15}
+                  color="#fff"
+                  style={{marginTop: 4.5}}
+                />
+                <Text style={[styles.text, {marginTop: 1}]}>{hotel.rating}</Text>
+              </View>
+            </View>
+            <Text style={[styles.about, {textAlign: 'left', marginTop: 5}]}>
+            Our hotel takes an active role in the green campaign by implementing eco-friendly practices and supporting sustainable initiatives for a better future
+            Our hotel takes an active role in the green campaign by implementing eco-friendly practices and supporting sustainable initiatives for a better future
+            </Text>
+          </View>
+          <View style={[styles.details]}>
+            <View>
+              <Image
+                source={require('./../assets/double-bed.png')}
+                style={{height: 60, width: 60, alignSelf: 'center'}}
+              />
+              <Text style={styles.icon_subText}>2 Bedrooms</Text>
+            </View>
+            <View>
+              <Image
+                source={require('./../assets/shower.png')}
+                style={{height: 60, width: 60, alignSelf: 'center'}}
+              />
+              <Text style={styles.icon_subText}>2 Bathrooms</Text>
+            </View>
+            <View>
+              <Image
+                source={require('./../assets/tv.png')}
+                style={{height: 60, width: 60, alignSelf: 'center'}}
+              />
+              <Text style={styles.icon_subText}>1 TV Lounge</Text>
             </View>
           </View>
-          <Text style={styles.about}>
-            This airplane is designed with eco-friendly technology to minimize
-            carbon emissions, making it an ideal choice for responsible and
-            sustainable air travel.This airplane is designed with eco-friendly
-            technology to minimize carbon emissions, making it an ideal choice
-            for responsible and sustainable air travel.
-          </Text>
+          <View>
+            <Pressable style={styles.button} 
+            onPress={
+              () => {
+                navigation.navigate('Flights', {hotel: hotel, place: place})
+              }
+            }
+            >
+              <View style={{flexDirection: 'row', gap: 10}}>
+                <Icon name="credit-card" size={22} color="#fff"></Icon>
+                <Text style={styles.btn_text}>Book Flights</Text>
+              </View>
+              <Text style={styles.btn_text}>{hotel.price}</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
         </View>
-        <View style={styles.details}>
-       <View>
-       <Image
-          source={require('./../assets/double-bed.png')}
-          style={{height: 60, width: 60, alignSelf: 'center'}}
-        />
-        <Text style={styles.icon_subText}>2 Bedrooms</Text>
-       </View>
-       <View>
-       <Image
-          source={require('./../assets/shower.png')}
-          style={{height: 60, width: 60, alignSelf: 'center'}}
-        />
-         <Text style={styles.icon_subText}>2 Bathrooms</Text>
-       </View>
-        <View>
-        <Image
-          source={require('./../assets/tv.png')}
-          style={{height: 60, width: 60, alignSelf: 'center'}}
-        />
-         <Text style={styles.icon_subText}>1 TV Lounge</Text>
-        </View>
-        </View>
-        <View>
-        <Pressable style={styles.button}>
-         <View style={{flexDirection: 'row', gap: 10}}>
-           <Icon name="credit-card" size={22} color="#fff"></Icon>
-          <Text style={styles.btn_text}>Book Now</Text>
-         </View>
-          <Text style={styles.btn_text}>$285</Text>
-        </Pressable>
-      </View>
-      </View>
+      
     </View>
-   
   );
 };
 const styles = new StyleSheet.create({
@@ -118,17 +174,19 @@ const styles = new StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 24,
     position: 'absolute',
-    bottom: 130,
-    height: '34%'
+    bottom: 1,
+    height: '50%'
   },
   desc_heading: {
-    padding: 27,
+    paddingHorizontal: 25,
+    paddingVertical: 18
   },
   desc_text: {
     fontFamily: 'poppins',
     fontSize: 24,
     fontWeight: 700,
     color: '#263238',
+    width: '70%'
   },
   about: {
     fontSize: 14,
@@ -138,6 +196,7 @@ const styles = new StyleSheet.create({
     lineHeight: 25,
     textAlign: 'left',
     fontWeight: 400,
+    marginTop: 4
   },
   rating: {
     height: 26,
@@ -156,12 +215,13 @@ const styles = new StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontFamily: 'Poppins-Regular',
+    
   },
   details: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     height: '20%',
- 
+    
   },
   icon_subText: {
     color: '#0D986A',
@@ -169,7 +229,8 @@ const styles = new StyleSheet.create({
     fontSize: 14,
     fontWeight: 800,
     textAlign: 'left',
-    marginTop: 4
+    marginTop: 4,
+    
   },
   button: {
     backgroundColor: '#0D986A',
