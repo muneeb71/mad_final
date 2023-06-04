@@ -29,7 +29,6 @@ const Destination = ({navigation, route}) => {
       );
       return;
     }
-    console.log('here');
     navigation.navigate('Recommendations', {
       category: category,
       continent: continent,
@@ -62,7 +61,7 @@ const Destination = ({navigation, route}) => {
                 <Text style={styles.label}>Category</Text>
                 <TextInput
                   style={styles.input}
-                  value={'wildlife'}
+                  value={category}
                   placeholder="Enter Category"
                   onChangeText={text => {
                     setCategory(text);
@@ -72,7 +71,7 @@ const Destination = ({navigation, route}) => {
                 <Text style={styles.label}>Continent</Text>
                 <TextInput
                   style={styles.input}
-                  value={'africa'}
+                  value={continent}
                   placeholder="Enter Continent"
                   onChangeText={text => {
                     setContinent(text);
@@ -82,7 +81,7 @@ const Destination = ({navigation, route}) => {
                 <Text style={styles.label}>Price Range</Text>
                 <TextInput
                   style={styles.input}
-                  value={'10000 dollars'}
+                  value={range}
                   placeholder="Enter Range"
                   onChangeText={text => {
                     setRange(text);
@@ -92,7 +91,7 @@ const Destination = ({navigation, route}) => {
                 <Text style={styles.label}>Features</Text>
                 <TextInput
                   style={styles.input}
-                  value={'wildlife'}
+                  value={features}
                   placeholder="Explain Your Preferences"
                   onChangeText={text => {
                     setFeatures(text);

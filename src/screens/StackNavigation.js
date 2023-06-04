@@ -9,6 +9,7 @@ import SingleFlight from './SingleFlight';
 import Checkout from './Checkout';
 import Accomodation from './Accomodation';
 import Home from './HomePlace';
+import Recommendations from './Recommendations';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,10 @@ const StackNavigation = () => {
       <Stack.Screen
         name="Home"
         component={Home}
+      />
+      <Stack.Screen
+        name="Recommendations"
+        component={Recommendations}
       />
       <Stack.Screen
         name="Accomodation"

@@ -18,6 +18,7 @@ import Flights from './src/screens/Flights';
 import Accomodation from './src/screens/Accomodation'
 import Home from './src/screens/HomePlace';
 import Navigator from './src/screens/StackNavigation';
+import SuggestNavig from './src/screens/SuggestNavig';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -54,7 +55,7 @@ const App = () => {
       />
       <Tab.Screen
         name="Destination"
-        component={Destination}
+        component={SuggestNavig}
         options={{
           tabBarLabel: 'Places',
           tabBarIcon: ({ color }) => (

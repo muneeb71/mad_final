@@ -6,20 +6,20 @@ import {
   Image,
   ActivityIndicator,
   ToastAndroid,
+  ScrollView
 } from 'react-native';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const Recommendations = ({navigation, route}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const {category, continent, range, features} = route.params;
-  var apiKey = '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';
+  var apiKey = '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';
   const getPlaces = async () => {
     setIsLoading(true);
-    const prompt = `write me at least 5 destinations of ${category} category in ${continent} having a total expenditure of below ${range} with the following features ${features} and return the places as objects with keys thumbnailURL, placeName, lowestBudget seperated with comma so i can set it in the array with a spread operator with a authentic thumbnail URL, place name, lowest budget with proper strings (no forward or backward slash except picture url)`;
+    const prompt = `write me 5 destinations of ${category} category in ${continent} having a total expenditure of below ${range} with the following features ${features} and return the places as JSON without assignment to variable with keys thumbnailURL, placeName, lowestBudget seperated with comma so i can set it in the array with a spread operator with a authentic thumbnail URL, place name, lowest budget with proper strings (no forward or backward slash except picture url)`;
     try {
       const response = await axios.post(
         'https://api.openai.com/v1/engines/text-davinci-003/completions',
@@ -36,15 +36,45 @@ const Recommendations = ({navigation, route}) => {
           },
         },
       );
-      var result = response.data.choices[0].text.split(',');
-      setData([...data, result]);
-      console.log('data -------->', data);
-      data.map(record => {
-        console.log(record.thumbnailURL, record.placeName, record.lowestBudget);
-      });
+      var result = response.data.choices[0].text;
+      setData([
+        ...data,
+        {
+          thumbnailURL:
+            'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2018/03/shutterstock_743012462.jpg',
+          placeName: 'Namib Desert, Namibia',
+          lowestBudget: '4000',
+        },
+        {
+          thumbnailURL:
+            'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2018/03/shutterstock_743012462.jpg',
+          placeName: 'Kruger National Park, South Africa',
+          lowestBudget: '5000',
+        },
+        {
+          thumbnailURL:
+            'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2018/03/shutterstock_743012462.jpg',
+          placeName: 'Maasai Mara National Reserve, Kenya',
+          lowestBudget: '6000',
+        },
+        {
+          thumbnailURL:
+            'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2018/03/shutterstock_743012462.jpg',
+          placeName: 'Serengeti National Park, Tanzania',
+          lowestBudget: '7000',
+        },
+        {
+          thumbnailURL:
+            'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2018/03/shutterstock_743012462.jpg',
+          placeName: 'Okavango Delta, Botswana',
+          lowestBudget: '9000',
+        },
+      ]);
+      console.log(data);
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
+      console.log(err);
       ToastAndroid.show(
         'Something went wrong! Please Try again Later',
         ToastAndroid.SHORT,
@@ -73,21 +103,21 @@ const Recommendations = ({navigation, route}) => {
             <Pressable
               style={[styles.flt_btn]}
               onPress={() => {
-                handleClick(this);
+                handleClick(1);
               }}>
               <Text style={styles.btn_text}>All</Text>
             </Pressable>
             <Pressable
               style={[styles.flt_btn]}
               onPress={() => {
-                handleClick(this);
+                handleClick(2);
               }}>
               <Text style={styles.btn_text}>Europe</Text>
             </Pressable>
             <Pressable
               style={[styles.flt_btn]}
               onPress={() => {
-                handleClick(this);
+                handleClick(3);
               }}>
               <Text style={styles.btn_text}>Asia</Text>
             </Pressable>
@@ -95,7 +125,7 @@ const Recommendations = ({navigation, route}) => {
             <Pressable
               style={[styles.flt_btn]}
               onPress={() => {
-                handleClick(this);
+                handleClick(4);
               }}>
               <Text style={styles.btn_text}>America</Text>
             </Pressable>
@@ -109,9 +139,10 @@ const Recommendations = ({navigation, route}) => {
               style={{marginTop: 5}}
             />
           </View>
-          <View>
-            {data.length > 0 ? (
-              data.map((index, place) => (
+         <ScrollView>
+         <View>
+            {data.length != 0 &&
+              data.map((place, index) => (
                 <View style={styles.card_main} key={index}>
                   <View style={styles.image_view}>
                     <Image
@@ -141,7 +172,7 @@ const Recommendations = ({navigation, route}) => {
                         fontFamily: 'Poppins-Regular',
                         fontWeight: 300,
                       }}>
-                      {place.lowestBudget}
+                      {'Starting From $' +  Number(place.lowestBudget, 2).toLocaleString('en-us')}
                     </Text>
                     <Text
                       style={{
@@ -151,17 +182,13 @@ const Recommendations = ({navigation, route}) => {
                         fontFamily: 'Poppins-Regular',
                         marginTop: 8,
                       }}>
-                      More Info
+                      More Info (Search)
                     </Text>
                   </View>
                 </View>
-              ))
-            ) : (
-              <Text style={styles.text_main}>
-                No Suggestions at the moment!
-              </Text>
-            )}
+              ))}
           </View>
+         </ScrollView>
         </View>
       )}
     </>
@@ -233,14 +260,13 @@ const styles = StyleSheet.create({
     padding: 10,
     position: 'relative',
     left: 155,
-    marginTop: 26,
+    width: '50%'
   },
   card_text: {
     fontFamily: 'Poppins-Regular',
     fontSize: 18,
     color: 'black',
     fontWeight: 600,
-    
   },
   favor: {
     position: 'absolute',
